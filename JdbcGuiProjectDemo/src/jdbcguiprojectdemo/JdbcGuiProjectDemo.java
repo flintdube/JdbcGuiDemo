@@ -22,6 +22,7 @@ public class JdbcGuiProjectDemo {
        Student student = Student.getInstance();
         System.out.println(student.toString());
         //edited from github
+        //commented from netbeans
        
     }
     
