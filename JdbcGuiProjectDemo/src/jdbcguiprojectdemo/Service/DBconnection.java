@@ -17,7 +17,18 @@ import java.util.logging.Logger;
  */
 public class DBconnection {
 
-    public static Connection getConnection() {
+    private static DBconnection jdbc;
+    
+    private DBconnection(){
+    }
+    
+    public static DBconnection getInstance(){
+        if(jdbc==null)
+            jdbc= new DBconnection();
+    return jdbc;
+    }
+   
+    public Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

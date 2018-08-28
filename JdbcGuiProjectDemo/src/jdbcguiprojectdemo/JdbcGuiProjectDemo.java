@@ -5,7 +5,6 @@
  */
 package jdbcguiprojectdemo;
 
-import java.sql.Connection;
 import jdbcguiprojectdemo.Model.Student;
 
 import jdbcguiprojectdemo.Service.DBconnection;
@@ -17,8 +16,9 @@ public class JdbcGuiProjectDemo {
 
     
     public static void main(String[] args) {
-       Connection conn = DBconnection.getConnection();
-       
+       DBconnection jdbc = DBconnection.getInstance();
+       jdbc.getConnection();
+
        Student student = Student.getInstance();
         System.out.println(student.toString());
        
