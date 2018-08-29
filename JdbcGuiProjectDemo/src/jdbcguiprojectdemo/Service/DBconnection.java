@@ -8,8 +8,6 @@ package jdbcguiprojectdemo.Service;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -18,29 +16,31 @@ import java.util.logging.Logger;
 public class DBconnection {
 
     private static DBconnection jdbc;
-    
-    private DBconnection(){
+
+    private DBconnection() {
     }
-    
-    public static DBconnection getInstance(){
-        if(jdbc==null)
-            jdbc= new DBconnection();
-    return jdbc;
+
+    public static DBconnection getInstance() {
+        if (jdbc == null) {
+            jdbc = new DBconnection();
+        }
+        return jdbc;
     }
-   
+
     public Connection getConnection() {
         Connection conn = null;
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             conn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;databaseName=Test", "sa", "Passw0rd");
             if (conn == null) {
-                System.out.println("Db Connection failed...");
+                System.out.println("DB connection failed!!!");
             } else {
-                System.out.println("db connection established...");
+                System.out.println("DB connection established...");
             }
         } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(DBconnection.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
         }
         return conn;
     }
+
 }
